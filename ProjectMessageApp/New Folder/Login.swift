@@ -11,7 +11,7 @@ struct Login: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.blue.ignoresSafeArea()
+                Color.init(hex: "#3632a8").ignoresSafeArea()
                 VStack(spacing: 20) {
                     
                     Image("bluelogo")

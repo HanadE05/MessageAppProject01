@@ -20,14 +20,11 @@ struct AuthChecker: View {
                 Login()
             }
         }
-        .onAppear(perform: checkAuthStatus)
-    }
-
-    private func checkAuthStatus() {
-        isAuthenticated = Auth.auth().currentUser != nil
-
-        Auth.auth().addStateDidChangeListener { auth, user in
-            isAuthenticated = user != nil
+        .onAppear {
+            Auth.auth().addStateDidChangeListener { _, user in
+                isAuthenticated = user != nil
+            }
         }
     }
 }
+

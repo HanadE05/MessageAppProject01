@@ -13,8 +13,7 @@ struct Settings: View {
         ZStack {
             VStack(spacing: 0) {
                 ZStack {
-                    Color.blue
-                        .ignoresSafeArea(edges: .top)
+                    Color.init(hex: "#3632a8").ignoresSafeArea(edges: .top)
                     VStack(spacing: 4) {
                         Text("Settings")
                             .font(.largeTitle)

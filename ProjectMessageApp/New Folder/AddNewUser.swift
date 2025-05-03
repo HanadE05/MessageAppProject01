@@ -19,56 +19,65 @@ struct AddNewUser: View {
     let db = Firestore.firestore()
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Search for a User")
-                .font(.largeTitle)
-                .padding(.top)
-            
-            TextField("Enter Username", text: $searchUsername)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(8)
-            
-            Button(action: searchForUser) {
-                Text("Search")
-                    .frame(maxWidth: .infinity)
+        ZStack{
+            Color.init(hex: "#3632a8").ignoresSafeArea()
+            VStack(spacing: 20) {
+                Image(systemName:"person.crop.circle.fill.badge.plus")
+                    .font(.system(size: 80))
                     .padding()
+                    .clipShape(Circle())
                     .foregroundColor(.white)
-                    .background(Color.green)
+                
+                Text("Search for a User") .font(.largeTitle).bold().foregroundStyle(Color.white)
+                
+                TextField("",text: $searchUsername,prompt: Text("Enter username").foregroundColor(.gray))
+                    .padding()
+                    .background(Color.white)
                     .cornerRadius(8)
-            }
-            
-            if let errorMessage = errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-                    .padding(.top, 5)
-            }
-            
-            if let user = foundUser {
-                VStack(spacing: 10) {
-                    Text("User Found: \(user["username"] as? String ?? "Unknown")")
-                        .font(.headline)
-                        .foregroundColor(.green)
-                    
-                    Button(action: {
-                        if let user = foundUser {
-                            addFriend(friendData: user)
-                            dismiss()
-                        }
-                    }) {
-                        Text("Add Friend")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color.blue)
-                            .cornerRadius(8)
-                    }
+                
+                Button(action: searchForUser) {
+                    Text("Search")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .background(Color.green)
+                        .cornerRadius(8)
                 }
-                .padding()
+                
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .padding(.top, 5)
+                }
+                
+                if let user = foundUser {
+                    VStack(spacing: 10) {
+                        Text("User Found: \(user["username"] as? String ?? "Unknown")")
+                            .font(.headline)
+                            .foregroundColor(.green)
+                        
+                        Button(action: {
+                            if let user = foundUser {
+                                addFriend(friendData: user)
+                                dismiss()
+                            }
+                        }) {
+                            Text("Add Friend")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.blue)
+                                .cornerRadius(8)
+                        }
+                    }
+                    .padding()
+                }
+                Spacer()
             }
-        }
-        Spacer()
             .padding()
+                .padding()
+        }
+       
     }
     
     func searchForUser() {

@@ -16,7 +16,7 @@ struct Homepage: View {
         NavigationStack {
             VStack(spacing: 0) {
                 ZStack {
-                    Color.blue.ignoresSafeArea(edges: .top)
+                    Color.init(hex: "#3632a8").ignoresSafeArea(edges: .top)
                     VStack(spacing: 4) {
                         Text("Chat")
                             .font(.largeTitle)
@@ -63,7 +63,7 @@ struct Homepage: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .foregroundColor(.white)
-                            .background(Color.blue)
+                            .background(Color.init(hex: "#3632a8"))
                             .cornerRadius(8)
                             .padding(.horizontal)
                     }

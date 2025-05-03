@@ -20,7 +20,7 @@ struct ProfileView: View {
         ZStack {
             VStack(spacing: 0) {
                 ZStack {
-                    Color.blue.ignoresSafeArea(edges: .top)
+                    Color.init(hex: "#3632a8").ignoresSafeArea(edges: .top)
                     VStack(spacing: 4) {
                         Text("Profile")
                             .font(.largeTitle)
@@ -98,7 +98,7 @@ struct ProfileView: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .foregroundColor(.white)
-                            .background(Color.blue)
+                            .background(Color.init(hex: "#3632a8"))
                             .cornerRadius(8)
                     }
                     if let errorMessage = errorMessage {

@@ -17,9 +17,8 @@ struct DeleteAccount: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.blue.ignoresSafeArea()
+                Color.init(hex: "#3632a8").ignoresSafeArea()
                 VStack(spacing: 20) {
-                    // 🔥 Trash Icon
                     Image(systemName: "trash")
                         .font(.system(size: 40))
                         .padding()
@@ -32,7 +31,6 @@ struct DeleteAccount: View {
                     
                     SecureField("", text: $password, prompt: Text("Enter password ...").foregroundColor(.gray))
                         .padding()
-                        .frame(maxWidth: 350)
                         .background(Color.white)
                         .cornerRadius(8)
                         .foregroundColor(.black)
@@ -45,7 +43,7 @@ struct DeleteAccount: View {
                     
                     Button(action: deleteAccount) {
                         Text("Permanaently delete")
-                            .frame(maxWidth: 310)
+                            .frame(maxWidth: .infinity)
                             .padding()
                             .foregroundColor(.white)
                             .background(Color.red)
@@ -55,9 +53,9 @@ struct DeleteAccount: View {
                         SignupView()
                     }
                     Spacer()
-                    
                 }
-                .padding(.top, 40)
+                .padding()
+                .padding()
                 
                 
             }
