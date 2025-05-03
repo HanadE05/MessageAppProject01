@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		470D55A02DBEA19300A1228A /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 470D559F2DBEA19300A1228A /* SwiftKeychainWrapper */; };
+		471346722D011C0B009AD3AB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 471346712D011C0B009AD3AB /* FirebaseFirestore */; };
+		47298C7F2D5A41CD006CD2D2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 47298C7E2D5A41CD006CD2D2 /* KeychainAccess */; };
+		47298C842D5A4DD4006CD2D2 /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 47298C832D5A4DD4006CD2D2 /* Crypto */; };
+		473767922CFFE80200D2B02B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 473767912CFFE80200D2B02B /* FirebaseAuth */; };
+		473767972CFFEA6D00D2B02B /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 473767962CFFEA6D00D2B02B /* FirebaseCore */; };
+		478E59C82D025A8300DEA8B4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 478E59C72D025A8300DEA8B4 /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		473767702CFFE71700D2B02B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +39,30 @@
 		473767792CFFE71700D2B02B /* ProjectMessageAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectMessageAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		47BE94742D98C8D200AFE6D1 /* Exceptions for "ProjectMessageApp" folder in "ProjectMessageApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ProjectMessageAppTests.swift,
+			);
+			target = 4737675D2CFFE71400D2B02B /* ProjectMessageApp */;
+		};
+		47BE94752D98C8D200AFE6D1 /* Exceptions for "ProjectMessageApp" folder in "ProjectMessageAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ProjectMessageAppTests.swift,
+			);
+			target = 4737676E2CFFE71700D2B02B /* ProjectMessageAppTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		473767602CFFE71400D2B02B /* ProjectMessageApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				47BE94742D98C8D200AFE6D1 /* Exceptions for "ProjectMessageApp" folder in "ProjectMessageApp" target */,
+				47BE94752D98C8D200AFE6D1 /* Exceptions for "ProjectMessageApp" folder in "ProjectMessageAppTests" target */,
+			);
 			path = ProjectMessageApp;
 			sourceTree = "<group>";
 		};
@@ -52,6 +83,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				473767972CFFEA6D00D2B02B /* FirebaseCore in Frameworks */,
+				47298C7F2D5A41CD006CD2D2 /* KeychainAccess in Frameworks */,
+				478E59C82D025A8300DEA8B4 /* FirebaseStorage in Frameworks */,
+				473767922CFFE80200D2B02B /* FirebaseAuth in Frameworks */,
+				47298C842D5A4DD4006CD2D2 /* Crypto in Frameworks */,
+				471346722D011C0B009AD3AB /* FirebaseFirestore in Frameworks */,
+				470D55A02DBEA19300A1228A /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +116,7 @@
 				473767602CFFE71400D2B02B /* ProjectMessageApp */,
 				473767722CFFE71700D2B02B /* ProjectMessageAppTests */,
 				4737677C2CFFE71700D2B02B /* ProjectMessageAppUITests */,
+				473767952CFFEA6D00D2B02B /* Frameworks */,
 				4737675F2CFFE71400D2B02B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +129,13 @@
 				473767792CFFE71700D2B02B /* ProjectMessageAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		473767952CFFEA6D00D2B02B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +158,13 @@
 			);
 			name = ProjectMessageApp;
 			packageProductDependencies = (
+				473767912CFFE80200D2B02B /* FirebaseAuth */,
+				473767962CFFEA6D00D2B02B /* FirebaseCore */,
+				471346712D011C0B009AD3AB /* FirebaseFirestore */,
+				478E59C72D025A8300DEA8B4 /* FirebaseStorage */,
+				47298C7E2D5A41CD006CD2D2 /* KeychainAccess */,
+				47298C832D5A4DD4006CD2D2 /* Crypto */,
+				470D559F2DBEA19300A1228A /* SwiftKeychainWrapper */,
 			);
 			productName = ProjectMessageApp;
 			productReference = 4737675E2CFFE71400D2B02B /* ProjectMessageApp.app */;
@@ -195,6 +248,12 @@
 			);
 			mainGroup = 473767552CFFE71400D2B02B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				473767902CFFE80200D2B02B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				47298C7D2D5A41CD006CD2D2 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				47298C822D5A4DD4006CD2D2 /* XCRemoteSwiftPackageReference "swift-crypto" */,
+				47298C852D5A5215006CD2D2 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4737675F2CFFE71400D2B02B /* Products */;
 			projectDirPath = "";
@@ -388,14 +447,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ProjectMessageApp/ProjectMessageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectMessageApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 8G9SF8YAPG;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ChatSpace;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -404,9 +465,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.1;
@@ -416,7 +476,8 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -427,14 +488,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ProjectMessageApp/ProjectMessageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjectMessageApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 8G9SF8YAPG;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ChatSpace;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -443,9 +506,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.1;
@@ -455,7 +517,8 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -591,6 +654,79 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		47298C7D2D5A41CD006CD2D2 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		47298C822D5A4DD4006CD2D2 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.10.2;
+			};
+		};
+		47298C852D5A5215006CD2D2 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		473767902CFFE80200D2B02B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		470D559F2DBEA19300A1228A /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47298C852D5A5215006CD2D2 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		471346712D011C0B009AD3AB /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 473767902CFFE80200D2B02B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		47298C7E2D5A41CD006CD2D2 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47298C7D2D5A41CD006CD2D2 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		47298C832D5A4DD4006CD2D2 /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47298C822D5A4DD4006CD2D2 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+		473767912CFFE80200D2B02B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 473767902CFFE80200D2B02B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		473767962CFFEA6D00D2B02B /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 473767902CFFE80200D2B02B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		478E59C72D025A8300DEA8B4 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 473767902CFFE80200D2B02B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 473767562CFFE71400D2B02B /* Project object */;
 }
