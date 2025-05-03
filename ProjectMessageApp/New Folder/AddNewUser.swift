@@ -71,16 +71,13 @@ struct AddNewUser: View {
             .padding()
     }
     
-    /// **Search for a User by Username**
     func searchForUser() {
         guard searchUsername.lowercased() != currentUsername else {
             errorMessage = "You cannot search for yourself."
             return
         }
         
-        db.collection("users")
-            .whereField("username", isEqualTo: searchUsername.lowercased()) // Ensure Firestore field name is correct
-            .getDocuments { snapshot, error in
+        db.collection("users").whereField("username", isEqualTo: searchUsername.lowercased()).getDocuments { snapshot, error in
                 if let error = error {
                     errorMessage = "Error searching for user: \(error.localizedDescription)"
                     return
@@ -90,6 +87,7 @@ struct AddNewUser: View {
                     errorMessage = "No user found with this username."
                     return
                 }
+            
                 
                 DispatchQueue.main.async {
                     foundUser = document.data()
@@ -99,18 +97,13 @@ struct AddNewUser: View {
     }
     
     func addFriend(friendData: [String: Any]) {
-        guard let currentUserEmail = currentUserEmail else {
-            errorMessage = "Current user email not available."
-            return
-        }
-        
+        guard let currentUserEmail = currentUserEmail else {return}
         guard let friendEmail = friendData["email"] as? String, !friendEmail.isEmpty else {
             errorMessage = "Friend email is missing or invalid."
             return
         }
-
-        // Save only the friend's email
-        let friendEntry: [String: Any] = ["email": friendEmail]
+        let friendEntry: [String: Any] =
+        ["email": friendEmail]
 
         db.collection("users").document(currentUserEmail).collection("friends").document(friendEmail).setData(friendEntry) { error in
             if let error = error {

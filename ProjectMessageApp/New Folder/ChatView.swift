@@ -149,7 +149,7 @@ struct ChatMessagesView: View {
                     print("Error sending message: \(error.localizedDescription)")
                 } else {
                     //print("Message sent successfully.")
-                    messageText = "" // clear text after sending
+                    messageText = ""
                 }
             }
     }
@@ -174,7 +174,7 @@ struct ChatMessagesView: View {
                 return
             }
 
-            //print("Image uploaded.")
+          
 
             storageRef.downloadURL { url, error in
                 if let error = error {

@@ -210,34 +210,4 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
 }
-/*
 
- 
- 
- 
- private func loadProfileData() {
-     guard let currentUserEmail = currentUserEmail else { return }
-     let docRef = db.collection("users").document(currentUserEmail)
-     docRef.getDocument { (document, error) in
-         guard error == nil else {
-             print("Error:", error ?? "")
-             return
-         }
-         if let document = document, document.exists {
-             let data = document.data()
-             if let data = data {
-                 firstName = data["firstName"] as? String ?? ""
-                 username = data["username"] as? String ?? ""
-                 originalUsername = username
-                 email = data["email"] as? String ?? ""
-                 if let imageUrl = data["profileImageUrl"] as? String {
-                     userProfileImageUrl = imageUrl
-                 }
-             }
-         }
-     }
- }
- 
- 
- 
- */

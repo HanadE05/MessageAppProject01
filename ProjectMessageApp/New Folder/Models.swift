@@ -11,7 +11,7 @@ import FirebaseFirestore // Needed for Timestamp
 import SwiftUI
 import PhotosUI
 
-// MARK: - Chat User Model
+
 struct ChatUser: Identifiable, Codable {
     let id: String
     let email: String
@@ -28,7 +28,6 @@ struct ChatUser: Identifiable, Codable {
     }
 }
 
-// MARK: - Message Model
 struct Message: Identifiable {
     let id: String
     let text: String
