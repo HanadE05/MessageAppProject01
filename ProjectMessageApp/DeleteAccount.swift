@@ -64,30 +64,44 @@ struct DeleteAccount: View {
     }
     private func deleteAccount() {
         guard let currentUser = Auth.auth().currentUser,
-              let email = currentUser.email?.lowercased() else {return}
-        
-            let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+              let email = currentUser.email?.lowercased() else { return }
 
-   
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+
         currentUser.reauthenticate(with: credential) { result, error in
             if let error = error {
-                print("Reauthentication failed: \(error.localizedDescription)")
                 errorMessage = "Invalid password"
                 return
             }
             
+            
+
+            db.collection("users").document(email).collection("friends").getDocuments { (querySnapshot, error) in
+                    if let error = error {
+                        print("Error getting documents: \(error.localizedDescription)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            document.reference.delete()
+                        }
+                    }
+                }
+
+            // Step 1: Delete Firestore document
             db.collection("users").document(email).delete { error in
                 if let error = error {
-                    print("Error deleting user data from Firestore: \(error.localizedDescription)")
+                    print("Error deleting user data: \(error.localizedDescription)")
                     return
-                }
-                print("User data deleted from Firestore.")
-                
-                currentUser.delete { error in
-                    if let error = error {
-                        print("Error deleting account: \(error.localizedDescription)")
-                    } else {
-                        isDeleted = true
+                } else {
+                    //print("User document \(email) deleted from Firestore.")
+
+                   
+                    currentUser.delete { error in
+                        if let error = error {
+                            print("Error deleting account: \(error.localizedDescription)")
+                        } else {
+                            print("account deleted.")
+                            isDeleted = true
+                        }
                     }
                 }
             }

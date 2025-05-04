@@ -10,9 +10,9 @@ struct ChatMessagesView: View {
     @State private var messageText: String = ""
     @State private var messages: [Message] = []
     @State private var errorMessage: String? = nil
-    @State private var isImagePickerPresented = false
     @State private var selectedImage: UIImage?
-    @State private var otherUserProfileImageUrl: String? = nil 
+    @State private var photoItem: PhotosPickerItem? 
+    @State private var otherUserProfileImageUrl: String? = nil
     @State private var otherUserName: String = ""
     private let db = Firestore.firestore()
     @AppStorage("chatBackgroundColor") private var chatBackgroundColor: String = "default"
@@ -46,10 +46,10 @@ struct ChatMessagesView: View {
                     .padding(.bottom, 30)
                 }
                 HStack {
-                    Button(action: { isImagePickerPresented = true }) {
-                        Image(systemName: "photo")
-                            .font(.system(size: 24))
-                            .foregroundColor(Color.init(hex: "#1332bd"))
+                    PhotosPicker(selection: $photoItem, matching: .images) {
+                                            Image(systemName: "photo")
+                                                .font(.system(size: 24))
+                                                .foregroundColor(Color(hex: "#1332bd"))
                     }
                     if let selectedImage = selectedImage {
                         Image(uiImage: selectedImage)
@@ -82,6 +82,14 @@ struct ChatMessagesView: View {
                 loadMessages()
                 fetchOtherUserDetails()
             }
+            .onChange(of: photoItem) {
+                            Task {
+                                if let data = try? await photoItem?.loadTransferable(type: Data.self),
+                                   let image = UIImage(data: data) {
+                                    selectedImage = image
+                                }
+                            }
+                        }
             .navigationTitle("Chat with \(otherUserEmail)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -100,9 +108,6 @@ struct ChatMessagesView: View {
                 }
             }
 
-            .sheet(isPresented: $isImagePickerPresented) {
-                ImagePicker(selectedImage: $selectedImage)
-            }
         }
     }
     private func fetchOtherUserDetails() {

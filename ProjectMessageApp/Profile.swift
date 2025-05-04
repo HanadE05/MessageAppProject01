@@ -142,7 +142,6 @@ struct ProfileView: View {
                print("No changes made to username.")
                return
            }
-        // Step 1: Check if username is already taken
         db.collection("users").whereField("username", isEqualTo: username).getDocuments { snapshot, error in
             if let error = error {
                 print("Error checking username: \(error.localizedDescription)")
@@ -180,8 +179,7 @@ struct ProfileView: View {
             completion(nil)
             return
         }
-        let storageRef = Storage.storage().reference()
-            .child("profileImages/\(userEmail).jpg")
+        let storageRef = Storage.storage().reference().child("profileImages/\(userEmail).jpg")
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         storageRef.putData(imageData, metadata: metadata) { _, error in
