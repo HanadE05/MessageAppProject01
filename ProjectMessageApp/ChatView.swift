@@ -179,7 +179,7 @@ struct ChatMessagesView: View {
                     return
                 }
                 guard let downloadURL = url else {
-                    //print("Download URL is nil.")
+                    print("Download URL is nil.")
                     return
                 }
                
