@@ -13,6 +13,7 @@ struct ProfileView: View {
     private let db = Firestore.firestore()
     @State private var userProfileImageUrl: String? = nil
     @State private var originalUsername = ""
+    @State private var successMessage = ""
     private var currentUserEmail: String? {
         Auth.auth().currentUser?.email?.lowercased()
     }
@@ -106,6 +107,10 @@ struct ProfileView: View {
                             .foregroundColor(.red)
                             .padding()
                     }
+                    if !successMessage.isEmpty {
+                        Text(successMessage)
+                            .foregroundColor(.green)
+                    }
                     Spacer()
                 }
                 .padding()
@@ -139,30 +144,40 @@ struct ProfileView: View {
         guard let email = currentUserEmail else { return }
 
         if username == originalUsername {
-               print("No changes made to username.")
+               //print("No changes made to username.")
                return
            }
-        db.collection("users").whereField("username", isEqualTo: username).getDocuments { snapshot, error in
+        db.collection("users").whereField("username", isEqualTo: username.lowercased()).getDocuments { snapshot, error in
             if let error = error {
                 print("Error checking username: \(error.localizedDescription)")
                 return
             }
             if let documents = snapshot?.documents, !documents.isEmpty {
-                print("Username is already taken.")
+                //print("Username is already taken.")
+                username = originalUsername
                 errorMessage="Username already taken"
+                clearMessagesAfterDelay()
                 return
             }
             let updatedData: [String: Any] = [
                 "firstName": firstName,
-                "username": username
+                "username": username.lowercased()
             ]
             db.collection("users").document(email).updateData(updatedData) { error in
                 if let error = error {
                     print("Failed to update: \(error.localizedDescription)")
                 } else {
-                    print("Profile updated successfully")
+                    successMessage="Profile details updated"
+                    clearMessagesAfterDelay()
+                    //print("Profile updated successfully")
                 }
             }
+        }
+    }
+    private func clearMessagesAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            errorMessage = ""
+            successMessage = ""
         }
     }
     
@@ -189,7 +204,9 @@ struct ProfileView: View {
             storageRef.downloadURL { url, error in
                 if let url = url {
                     let urlString = url.absoluteString
-                    print("Download url: \(urlString)")
+                    //print("Download url: \(urlString)")
+                    successMessage="Profile image updated"
+                    clearMessagesAfterDelay()
 
                     db.collection("users").document(userEmail).setData(["profileImageUrl": urlString], merge: true)
 

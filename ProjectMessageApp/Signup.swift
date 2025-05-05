@@ -126,7 +126,7 @@ struct SignupView: View {
                 errorMessage = "Error saving details: \(error.localizedDescription)"
             } else {
                 isSignedUp = true
-                print("User details saved")
+                //print("User details saved")
             }
         }
     }
