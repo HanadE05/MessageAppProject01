@@ -31,6 +31,7 @@ struct PasswordResetView: View {
                     TextField("", text: $email, prompt: Text("Enter Email").foregroundColor(.gray))
                         .padding()
                         .background(Color.white)
+                        .foregroundColor(.black)
                         .cornerRadius(8)
                     
                     Button("Send Reset Link") {

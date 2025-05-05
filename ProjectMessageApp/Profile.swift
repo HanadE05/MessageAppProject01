@@ -141,7 +141,6 @@ struct ProfileView: View {
     
     private func saveProfile() {
         guard let email = currentUserEmail else { return }
-
         db.collection("users").whereField("username", isEqualTo: username.lowercased()).getDocuments { snapshot, error in
             if let error = error {
                 errorMessage = "Error checking username: \(error.localizedDescription)"
