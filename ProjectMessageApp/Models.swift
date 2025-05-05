@@ -12,7 +12,7 @@ import SwiftUI
 import PhotosUI
 
 
-struct User: Identifiable, Codable {
+struct User: Identifiable {
     let id: String
     let email: String
     let firstName: String
