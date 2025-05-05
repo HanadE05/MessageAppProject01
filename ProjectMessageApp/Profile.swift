@@ -59,7 +59,7 @@ struct ProfileView: View {
                                 self.image = image
                                 uploadImage { url in
                                     if let url = url {
-                                        print(" Image uploaded. URL: \(url)")
+                                        //print(" Image uploaded. URL: \(url)")
                                     }
                                 }
                             }
@@ -139,7 +139,6 @@ struct ProfileView: View {
     }
 
     
-    
     private func saveProfile() {
         guard let email = currentUserEmail else { return }
 
@@ -182,7 +181,6 @@ struct ProfileView: View {
     }
     
     
-
     private func uploadImage(completion: @escaping (URL?) -> Void) {
         guard let imageData = image?.jpegData(compressionQuality: 0.2) else {
             completion(nil)
