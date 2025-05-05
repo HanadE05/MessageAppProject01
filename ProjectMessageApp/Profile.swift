@@ -142,21 +142,16 @@ struct ProfileView: View {
     private func saveProfile() {
         guard let email = currentUserEmail else { return }
 
-        if username == originalUsername {
-               //print("No changes made to username.")
-               return
-           }
         db.collection("users").whereField("username", isEqualTo: username.lowercased()).getDocuments { snapshot, error in
             if let error = error {
-                print("Error checking username: \(error.localizedDescription)")
+                errorMessage = "Error checking username: \(error.localizedDescription)"
                 return
             }
             if let documents = snapshot?.documents, !documents.isEmpty {
-                //print("Username is already taken.")
-                username = originalUsername
-                errorMessage="Username already taken"
-                clearMessagesAfterDelay()
-                return
+                if documents.first?.documentID != email {
+                    errorMessage = "Username is already taken."
+                    return
+                }
             }
             let updatedData: [String: Any] = [
                 "firstName": firstName,
@@ -164,15 +159,15 @@ struct ProfileView: View {
             ]
             db.collection("users").document(email).updateData(updatedData) { error in
                 if let error = error {
-                    print("Failed to update: \(error.localizedDescription)")
+                    errorMessage = "Failed to update: \(error.localizedDescription)"
                 } else {
-                    successMessage="Profile details updated"
+                    successMessage = "Profile details updated"
                     clearMessagesAfterDelay()
-                    //print("Profile updated successfully")
                 }
             }
         }
     }
+    
     private func clearMessagesAfterDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             errorMessage = ""
