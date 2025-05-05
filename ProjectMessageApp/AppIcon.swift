@@ -58,7 +58,7 @@ struct AppIcon: View {
             if let error = error {
                 print("Error setting alternate icon: \(error.localizedDescription)")
             } else {
-                print("Successfully changed app icon to \(iconName ?? "default")")
+                //pprint("Successfully changed app icon to \(iconName ?? "default")")
             }
         }
     }

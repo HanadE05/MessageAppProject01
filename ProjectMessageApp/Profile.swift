@@ -147,7 +147,6 @@ struct ProfileView: View {
                 print("Error checking username: \(error.localizedDescription)")
                 return
             }
-
             if let documents = snapshot?.documents, !documents.isEmpty {
                 print("Username is already taken.")
                 errorMessage="Username already taken"
@@ -157,7 +156,6 @@ struct ProfileView: View {
                 "firstName": firstName,
                 "username": username
             ]
-
             db.collection("users").document(email).updateData(updatedData) { error in
                 if let error = error {
                     print("Failed to update: \(error.localizedDescription)")

@@ -161,51 +161,38 @@ struct ChatMessagesView: View {
 
     func sendImageMessage(image: UIImage) {
         guard let imageData = image.jpegData(compressionQuality: 0.2) else {
-            //print("Failed to get JPEG data.")
+            print("Failed to get JPEG data.")
             return
         }
-
         let imageID = UUID().uuidString
         let storageRef = Storage.storage().reference().child("chat_images/\(imageID).jpg")
-
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg" 
-
-        print("📤 Uploading image to: chat_images/\(imageID).jpg")
-
         storageRef.putData(imageData, metadata: metadata) { metadata, error in
             if let error = error {
-                //print("Error uploading image: \(error.localizedDescription)")
+                print("Error uploading image: \(error.localizedDescription)")
                 return
             }
-
-          
-
             storageRef.downloadURL { url, error in
                 if let error = error {
-                    //print("Error getting download URL: \(error.localizedDescription)")
+                    print("Error getting download URL: \(error.localizedDescription)")
                     return
                 }
-
                 guard let downloadURL = url else {
                     //print("Download URL is nil.")
                     return
                 }
-
-                //print("Download URL received: \(downloadURL.absoluteString)")
-
+               
                 let messageData: [String: Any] = [
                     "imageUrl": downloadURL.absoluteString,
                     "senderEmail": currentUserEmail,
                     "receiverEmail": otherUserEmail,
                     "timestamp": Timestamp()
                 ]
-
                 db.collection("messages").document(conversationId).collection("chat").addDocument(data: messageData) { error in
                     if let error = error {
-                        //print("Error sending image message: \(error.localizedDescription)")
+                        print("Error sending image message: \(error.localizedDescription)")
                     } else {
-                        //print("Image message sent successfully.")
                         selectedImage = nil
                     }
                 }

@@ -45,6 +45,8 @@ struct PasswordResetView: View {
                     if !message.isEmpty {
                         Text(message)
                             .padding()
+                            .foregroundColor(message.contains("Error:") ? .red : .green)
+                            
                     }
                     NavigationLink(destination: Login()) {
                         Text("Go back to login")
@@ -63,6 +65,7 @@ struct PasswordResetView: View {
                 message = "Error: \(error.localizedDescription)"
             } else {
                 message = "Password reset link sent to \(email)"
+                
             }
         }
     }

@@ -35,6 +35,7 @@ struct AddNewUser: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(8)
+                    .foregroundColor(.black)
 
                 Button("Search", action: searchForUser)
                     .padding()

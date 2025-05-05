@@ -29,7 +29,7 @@ struct DeleteAccount: View {
                         .font(.largeTitle)
                         .bold().foregroundStyle(Color.white)
                     
-                    SecureField("", text: $password, prompt: Text("Enter password ...").foregroundColor(.gray))
+                    SecureField("", text: $password, prompt: Text("Enter password").foregroundColor(.gray))
                         .padding()
                         .background(Color.white)
                         .cornerRadius(8)
