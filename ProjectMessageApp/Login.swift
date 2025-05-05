@@ -81,7 +81,7 @@ struct Login: View {
             } else {
                 isLoggedIn = true
                 
-                print("User has logged in Successfully")
+                //print("User has logged in Successfully")
             }
         }
     }
