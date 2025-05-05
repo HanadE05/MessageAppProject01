@@ -4,7 +4,7 @@ import FirebaseAuth
 
 struct AddNewUser: View {
     @State private var searchUsername: String = ""
-    @State private var foundUsername: ChatUser? = nil
+    @State private var foundUsername: User? = nil
     @State private var errorMessage: String? = nil
     @Environment(\.dismiss) private var dismiss
 
@@ -93,13 +93,13 @@ struct AddNewUser: View {
                 }
             
             DispatchQueue.main.async {
-                foundUsername = ChatUser(document: document.data(), id: document.documentID)
+                foundUsername = User(document: document.data(), id: document.documentID)
                 errorMessage = nil
             }
         }
     }
     
-    func addFriend(friend: ChatUser) {
+    func addFriend(friend: User) {
         guard let currentUserEmail = currentUserEmail else { return }
 
         let friendEntry: [String: Any] = [

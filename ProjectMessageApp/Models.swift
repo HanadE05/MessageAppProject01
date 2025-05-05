@@ -7,12 +7,12 @@
 
 import Foundation
 import Foundation
-import FirebaseFirestore // Needed for Timestamp
+import FirebaseFirestore
 import SwiftUI
 import PhotosUI
 
 
-struct ChatUser: Identifiable, Codable {
+struct User: Identifiable, Codable {
     let id: String
     let email: String
     let firstName: String

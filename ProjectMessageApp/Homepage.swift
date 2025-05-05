@@ -4,7 +4,7 @@ import FirebaseAuth
 struct Homepage: View {
     
     @EnvironmentObject var themeManager: ThemeManager
-    @State private var users: [ChatUser] = []
+    @State private var users: [User] = []
     @State private var errorMessage: String?
     @State private var image: UIImage? = nil
 
@@ -100,7 +100,7 @@ struct Homepage: View {
                     }
 
                     users = snapshot?.documents.compactMap { doc in
-                        ChatUser(document: doc.data(), id: doc.documentID)
+                        User(document: doc.data(), id: doc.documentID)
                     } ?? []
                 }
             }

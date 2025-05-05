@@ -124,7 +124,7 @@ struct ProfileView: View {
                   let data = document.data() else {
                 return
             }
-            let user = ChatUser(document: data, id: document.documentID)
+            let user = User(document: data, id: document.documentID)
             firstName = user.firstName
             username = user.username
             originalUsername = user.username
