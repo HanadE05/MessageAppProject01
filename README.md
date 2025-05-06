@@ -1,6 +1,6 @@
-#  <#Title#>
+# IOS Message App Project:
 
-# ProjectMessageApp
+# ProjectMessageApp(IOS only)
 
 ## App Description
 A secure and customizable iOS messaging app built using SwiftUI and Firebase. It supports real-time messaging, image sharing, authentication, and theme personalization.
